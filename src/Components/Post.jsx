@@ -9,7 +9,7 @@ function Post() {
   const handleGetPost = async () => {
     const response = await getposts();
     setData(response.data);
-    console.log(response.data);
+   
   };
 
   useEffect(() => {

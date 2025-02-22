@@ -40,7 +40,7 @@ function Form({ data, setData, updatePostApi, setUpdatePostApi }) {
     try {
       const res = await postData(addData);
       if (res.status === 201) {
-        console.log("res", res);
+      
         setData([...data, res.data]);
         setAddData({ title: "", body: "" });
       }
