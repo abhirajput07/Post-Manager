@@ -40,7 +40,6 @@ function Form({ data, setData, updatePostApi, setUpdatePostApi }) {
     try {
       const res = await postData(addData);
       if (res.status === 201) {
-      
         setData([...data, res.data]);
         setAddData({ title: "", body: "" });
       }
@@ -62,39 +61,43 @@ function Form({ data, setData, updatePostApi, setUpdatePostApi }) {
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="flex justify-center gap-2 p-5 border-l-4 border-white mx-auto rounded-xl bg-gray-800 mt-10"
+      className="flex justify-center  items-center flex-wrap gap-2 p-5 border-l-4 border-white md:mx-auto rounded-xl bg-gray-800 mt-10 mx-15"
     >
-      <div>
-        <label htmlFor="title"></label>
-        <input
-          type="text"
-          className="border text-white outline-none px-3 py-1"
-          placeholder="Add Title"
-          name="title"
-          id="title"
-          value={addData.title}
-          onChange={handleInputChange}
-        />
+      <div className="flex gap-3 md:flex-nowrap flex-wrap justify-between items-center ">
+        <div className="w-full md:w-auto">
+          <label htmlFor="title"></label>
+          <input
+            type="text"
+            className="border text-white outline-none md:px-3 px-6 py-1  w-full"
+            placeholder="Add Title"
+            name="title"
+            id="title"
+            value={addData.title}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="w-full md:w-auto">
+          <label htmlFor="body"></label>
+          <input
+            type="text"
+            className="border text-white outline-none  md:px-3 px-6 py-1 w-full"
+            placeholder="Add Body"
+            name="body"
+            id="boyd"
+            value={addData.body}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="w-full md:w-auto">
+          <button
+            className="border text-white outline-none px-3 py-1 rounded bg-green-600 hover:bg-green-700 transition"
+            type="submit"
+            value={isEmpty ? "Add" : "Edit"}
+          >
+            {isEmpty ? "Add" : "Edit"}
+          </button>
+        </div>
       </div>
-      <div>
-        <label htmlFor="body"></label>
-        <input
-          type="text"
-          className="border text-white outline-none px-3 py-1"
-          placeholder="Add Body"
-          name="body"
-          id="boyd"
-          value={addData.body}
-          onChange={handleInputChange}
-        />
-      </div>
-      <button
-        className="border text-white outline-none px-3 py-1 rounded bg-green-600 hover:bg-green-700 transition"
-        type="submit"
-        value={isEmpty ? "Add" : "Edit"}
-      >
-        {isEmpty ? "Add" : "Edit"}
-      </button>
     </form>
   );
 }
